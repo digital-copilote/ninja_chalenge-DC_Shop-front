@@ -10,7 +10,7 @@ const HomeContainer = () => {
   if (error) return <p>Error :(</p>;
 
   return (
-    <div>
+    <div className="flex">
       {data?.AllUsers?.map((user) => (
         <p key={user?.idUser}>{user?.email}</p>
       ))}

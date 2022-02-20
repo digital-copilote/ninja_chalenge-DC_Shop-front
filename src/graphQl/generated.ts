@@ -1,4 +1,3 @@
-import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -42,6 +41,12 @@ export type DeleteOrganizationResponse = {
   organization?: Maybe<Organizations>;
 };
 
+export type DeleteShirtResponse = {
+  __typename?: 'DeleteShirtResponse';
+  message?: Maybe<Scalars['String']>;
+  shirt?: Maybe<Shirts>;
+};
+
 export type DeleteSizeResponse = {
   __typename?: 'DeleteSizeResponse';
   message?: Maybe<Scalars['String']>;
@@ -74,6 +79,7 @@ export type Mutation = {
   createOrder?: Maybe<Orders>;
   createOrderItem?: Maybe<OrdersItems>;
   createOrganization?: Maybe<Organizations>;
+  createShirt?: Maybe<Shirts>;
   createSize?: Maybe<Sizes>;
   createTheme?: Maybe<Themes>;
   createUser?: Maybe<Users>;
@@ -81,6 +87,7 @@ export type Mutation = {
   deleteOrder?: Maybe<Orders>;
   deleteOrderItem?: Maybe<DeleteOrderItemResponse>;
   deleteOrganization?: Maybe<DeleteOrganizationResponse>;
+  deleteShirt?: Maybe<DeleteShirtResponse>;
   deleteSize?: Maybe<DeleteSizeResponse>;
   deleteTheme?: Maybe<DeleteThemeResponse>;
   deleteUser?: Maybe<Users>;
@@ -89,6 +96,7 @@ export type Mutation = {
   updateOrder?: Maybe<UpdateOrderResponse>;
   updateOrderItem?: Maybe<UpdateOrderItemResponse>;
   updateOrganization?: Maybe<UpdateOrganizationResponse>;
+  updateShirt?: Maybe<UpdateShirtResponse>;
   updateSize?: Maybe<UpdateSizeResponse>;
   updateTheme?: Maybe<UpdateThemeResponse>;
   updateUser?: Maybe<UpdateUserResponse>;
@@ -108,6 +116,10 @@ export type MutationCreateOrderItemArgs = {
 
 export type MutationCreateOrganizationArgs = {
   data: CreateOrganizationInput;
+};
+
+export type MutationCreateShirtArgs = {
+  data: ShirtCreateInput;
 };
 
 export type MutationCreateSizeArgs = {
@@ -136,6 +148,10 @@ export type MutationDeleteOrderItemArgs = {
 
 export type MutationDeleteOrganizationArgs = {
   idOrganization: Scalars['ID'];
+};
+
+export type MutationDeleteShirtArgs = {
+  idShirt: Scalars['ID'];
 };
 
 export type MutationDeleteSizeArgs = {
@@ -172,6 +188,11 @@ export type MutationUpdateOrderItemArgs = {
 export type MutationUpdateOrganizationArgs = {
   data: UpdateOrganizationInput;
   idOrganization: Scalars['ID'];
+};
+
+export type MutationUpdateShirtArgs = {
+  data: UpdateShirtInput;
+  idShirt: Scalars['ID'];
 };
 
 export type MutationUpdateSizeArgs = {
@@ -221,6 +242,7 @@ export type Organizations = {
   idUser: Scalars['ID'];
   name?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['String']>;
+  siret?: Maybe<Scalars['String']>;
   user?: Maybe<Users>;
   zipCode?: Maybe<Scalars['String']>;
 };
@@ -289,7 +311,7 @@ export type Shirts = {
   idShirt: Scalars['ID'];
   idSize: Scalars['ID'];
   orders?: Maybe<Array<Maybe<OrdersItems>>>;
-  price?: Maybe<Scalars['Float']>;
+  price: Scalars['Float'];
   size?: Maybe<Sizes>;
 };
 
@@ -329,6 +351,12 @@ export type UpdateOrganizationResponse = {
   __typename?: 'UpdateOrganizationResponse';
   message?: Maybe<Scalars['String']>;
   organization?: Maybe<Organizations>;
+};
+
+export type UpdateShirtResponse = {
+  __typename?: 'UpdateShirtResponse';
+  message?: Maybe<Scalars['String']>;
+  shirt?: Maybe<Shirts>;
 };
 
 export type UpdateSizeResponse = {
@@ -411,6 +439,12 @@ export type OrderItemCreateInput = {
   quantity: Scalars['Int'];
 };
 
+export type ShirtCreateInput = {
+  idDraw: Scalars['Int'];
+  idSize: Scalars['Int'];
+  price: Scalars['Float'];
+};
+
 export type SizeCreateInput = {
   idSize?: InputMaybe<Scalars['ID']>;
   name?: InputMaybe<Scalars['String']>;
@@ -459,6 +493,13 @@ export type UpdateOrganizationInput = {
   zipCode?: InputMaybe<Scalars['String']>;
 };
 
+export type UpdateShirtInput = {
+  idDraw: Scalars['Int'];
+  idShirt?: InputMaybe<Scalars['ID']>;
+  idSize: Scalars['Int'];
+  price: Scalars['Float'];
+};
+
 export type UpdateSizeInput = {
   idSize?: InputMaybe<Scalars['ID']>;
   name?: InputMaybe<Scalars['String']>;
@@ -496,64 +537,3 @@ export type UserCreateInput = {
   role?: InputMaybe<Scalars['String']>;
   zipCode?: InputMaybe<Scalars['String']>;
 };
-
-export type QueryQueryVariables = Exact<{ [key: string]: never }>;
-
-export type QueryQuery = {
-  __typename?: 'Query';
-  AllUsers?: Array<{
-    __typename?: 'Users';
-    email: string;
-    organizations?: Array<{
-      __typename?: 'Organizations';
-      name?: string | null;
-    } | null> | null;
-    draws?: Array<{ __typename?: 'Draws'; name?: string | null } | null> | null;
-  } | null> | null;
-};
-
-export const QueryDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'query',
-      name: { kind: 'Name', value: 'Query' },
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            name: { kind: 'Name', value: 'AllUsers' },
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                { kind: 'Field', name: { kind: 'Name', value: 'email' } },
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'organizations' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-                    ],
-                  },
-                },
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'draws' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<QueryQuery, QueryQueryVariables>;

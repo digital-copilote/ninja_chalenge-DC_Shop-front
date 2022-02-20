@@ -1,0 +1,11 @@
+query Query {
+  AllUsers {
+    email
+    organizations {
+      name
+    }
+    draws {
+      name
+    }
+  }
+}

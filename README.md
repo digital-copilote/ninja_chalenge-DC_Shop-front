@@ -1,15 +1,16 @@
-# Vite + React + Typescript + Eslint + Prettier
+<h1>Ninja-TechChallenge-Front</h1>
 
-A starter for React with Typescript with the fast Vite and all static code testing with Eslint and formatting with Prettier.
+## <h3>Project made with Vite - eslint - prettier - tailwind and graphQl</h3>
 
-![Vite + React + Typescript + Eslint + Prettier](/resources/screenshot.png)
+<p>Clone the project</p>
+<pre>git clone</pre>
 
-I found out about Vite and I wanted to have a boilerplate for the technologies that I use. You can find more about these in the following links: [Vite](https://github.com/vitejs/vite), [React](https://reactjs.org/), [Typescript](https://www.typescriptlang.org/), [Eslint](https://eslint.org/), [Prettier](https://prettier.io/).
+<p>Install dependencies</p>
+<pre>npm install</pre>
 
-## Installation
+<p>Start the project</p>
+<pre>npm run dev</pre>
 
-Clone the repo and run `yarn install`
+## <P>If your change the back, think to run this command for update the generate.ts file for graphQl</p>
 
-## Start
-
-After the successfull installation of the packages: `yarn dev`
+<pre>npm run generate</pre>

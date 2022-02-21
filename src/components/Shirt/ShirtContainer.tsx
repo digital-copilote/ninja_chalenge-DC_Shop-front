@@ -7,6 +7,7 @@ import ShirtView from './ShirtView';
 
 const ShirtContainer = () => {
   const { loading, error, data } = useQuery<Query>(shirtsQuery);
+  console.log(data);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;

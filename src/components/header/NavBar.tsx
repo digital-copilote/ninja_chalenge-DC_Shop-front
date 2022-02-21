@@ -1,5 +1,5 @@
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/solid';
+import { MenuIcon, ShoppingCartIcon, XIcon } from '@heroicons/react/solid';
 import { SearchIcon } from '@heroicons/react/solid';
 import React from 'react';
 import { Fragment } from 'react';
@@ -8,6 +8,8 @@ import { NavLink } from 'react-router-dom';
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ');
 }
+
+const brand = "Arts'Eco";
 
 const linkArray = [
   {
@@ -45,33 +47,45 @@ const linkProfile = [
 
 const NavBar = () => {
   return (
-    <Disclosure as="nav" className="bg-white shadow">
+    <Disclosure as="nav" className="bg-white">
       {({ open }) => (
         <>
           <div className="px-2 mx-auto max-w-7xl sm:px-4 lg:px-8">
             <div className="flex justify-between h-16">
-              <div className="flex px-2 lg:px-0">
+              <div className="flex w-full px-2 lg:px-0">
                 <div className="flex items-center flex-shrink-0">
-                  <img
-                    className="block w-auto h-8 lg:hidden"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                    alt="Workflow"
-                  />
-                  <img
-                    className="hidden w-auto h-8 lg:block"
-                    src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
-                    alt="Workflow"
-                  />
+                  <span className="flex text-4xl">
+                    <h2>{brand.slice(0, 5)}</h2>
+                    <h2 className="text-primary">{brand.charAt(5)}</h2>
+                    <h2>{brand.slice(6)}</h2>
+                  </span>
+                </div>
+                <div className="flex items-center justify-center flex-1 px-2 lg:ml-6 lg:justify-end">
+                  <div className="w-full max-w-lg lg:max-w-xs">
+                    <label htmlFor="search" className="sr-only">
+                      Search
+                    </label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <SearchIcon className="w-5 h-5 text-text" aria-hidden="true" />
+                      </div>
+                      <input
+                        id="search"
+                        name="search"
+                        className="block w-full py-2 pl-10 pr-3 leading-5 placeholder-gray-500 bg-white border border-gray-300 rounded-md focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm"
+                        placeholder="Search"
+                        type="search"
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
                   {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
                   {linkArray.map((link, index) => (
                     <NavLink
                       className={({ isActive }) =>
-                        'items-center justify-center  inline-flex' +
-                        (isActive
-                          ? ' border-indigo-500 text-gray-900 px-1 pt-1 border-b-2 text-sm font-medium'
-                          : '')
+                        (isActive ? ' text-gray-900  border-primary font-medium ' : '') +
+                        'px-1 pt-1 border-transparent border-b-2 text-gray-500 items-center justify-center inline-flex'
                       }
                       key={index}
                       to={link.path}>
@@ -80,28 +94,10 @@ const NavBar = () => {
                   ))}
                 </div>
               </div>
-              <div className="flex items-center justify-center flex-1 px-2 lg:ml-6 lg:justify-end">
-                <div className="w-full max-w-lg lg:max-w-xs">
-                  <label htmlFor="search" className="sr-only">
-                    Search
-                  </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <SearchIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
-                    </div>
-                    <input
-                      id="search"
-                      name="search"
-                      className="block w-full py-2 pl-10 pr-3 leading-5 placeholder-gray-500 bg-white border border-gray-300 rounded-md focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      placeholder="Search"
-                      type="search"
-                    />
-                  </div>
-                </div>
-              </div>
+
               <div className="flex items-center lg:hidden">
                 {/* Mobile menu button */}
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XIcon className="block w-6 h-6" aria-hidden="true" />
@@ -113,15 +109,15 @@ const NavBar = () => {
               <div className="hidden lg:ml-4 lg:flex lg:items-center">
                 <button
                   type="button"
-                  className="flex-shrink-0 p-1 text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  className="flex-shrink-0 p-1 text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
                   <span className="sr-only">View notifications</span>
-                  <BellIcon className="w-6 h-6" aria-hidden="true" />
+                  <ShoppingCartIcon className="w-6 h-6" aria-hidden="true" />
                 </button>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative flex-shrink-0 ml-4">
                   <div>
-                    <Menu.Button className="flex text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <Menu.Button className="flex text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="w-8 h-8 rounded-full"
@@ -192,7 +188,7 @@ const NavBar = () => {
                   type="button"
                   className="flex-shrink-0 p-1 ml-auto text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                   <span className="sr-only">View notifications</span>
-                  <BellIcon className="w-6 h-6" aria-hidden="true" />
+                  <ShoppingCartIcon className="w-6 h-6" aria-hidden="true" />
                 </button>
               </div>
               <div className="mt-3 space-y-1">

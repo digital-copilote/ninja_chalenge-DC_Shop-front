@@ -1,10 +1,10 @@
-import HomeContainer from 'components/pages/home/HomeContainer';
+import ShirtContainer from 'components/pages/Shirt/ShirtContainer';
 import React from 'react';
 
 function App() {
   return (
     <div className="App">
-      <HomeContainer />
+      <ShirtContainer />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { Shirts } from 'graphQl/generated';
 import React from 'react';
 
-import shirtBase from '../../../../resources/shirt.png';
+import shirtBase from '../../../resources/shirt.png';
 
 type Props = {
   shirt: Shirts | null;

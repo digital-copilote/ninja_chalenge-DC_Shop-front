@@ -4,6 +4,8 @@ export const usersQuery = gql`
   query {
     AllUsers {
       idUser
+      firstname
+      lastname
       email
       organizations {
         name
@@ -22,7 +24,15 @@ export const shirtsQuery = gql`
       draw {
         idDraw
         name
+        urlDraw
+        theme {
+          idTheme
+          name
+        }
         user {
+          idUser
+          firstname
+          lastname
           role
           idUser
           bio

@@ -21,6 +21,7 @@
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.5",
     "@tailwindcss/forms": "^0.4.0",
+    "aphrodite": "^2.4.0",
     "autoprefixer": "^10.4.2",
     "graphql": "^16.3.0",
     "react": "^17.0.2",

@@ -268,6 +268,10 @@ export type Query = {
   UserOrganization?: Maybe<Array<Maybe<Organizations>>>;
 };
 
+export type QueryAllShirtsArgs = {
+  idTheme?: InputMaybe<Scalars['ID']>;
+};
+
 export type QueryOneDrawArgs = {
   idDraw: Scalars['ID'];
 };

@@ -54,6 +54,8 @@ const styles = StyleSheet.create({
 });
 
 const ShirtView = ({ shirt, location }: Props) => {
+  console.log();
+
   return (
     <div key={shirt?.idShirt} className="relative">
       <h2 className={`before:bg-primary text-2xl ${css(styles.collectionTitle)}`}>
@@ -91,11 +93,11 @@ const ShirtView = ({ shirt, location }: Props) => {
           </div>
         </Link>
       </div>
-      {location !== 'collections' && (
+      {location == 'home' && (
         <div className="p-4">
           <Link
             className="flex items-center justify-end"
-            to={`/collections/${shirt?.draw?.theme?.idTheme}`}>
+            to={`/collections/${shirt?.draw?.idTheme}`}>
             <p className={`before:bg-primary ${css(styles.collectionLink)}`}>
               Voir la collection
             </p>

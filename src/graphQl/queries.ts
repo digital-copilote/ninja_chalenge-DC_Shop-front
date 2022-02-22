@@ -17,29 +17,16 @@ export const usersQuery = gql`
   }
 `;
 export const shirtsQuery = gql`
-  query Query {
-    AllShirts {
+  query Query($idTheme: ID) {
+    AllShirts(idTheme: $idTheme) {
       idShirt
       price
       draw {
-        idDraw
+        idTheme
         name
         urlDraw
         theme {
-          idTheme
           name
-        }
-        user {
-          idUser
-          firstname
-          lastname
-          role
-          idUser
-          bio
-          organizations {
-            idOrganization
-            name
-          }
         }
       }
     }

@@ -1,5 +1,6 @@
 import { ArrowRightIcon } from '@heroicons/react/solid';
 import { css, StyleSheet } from 'aphrodite';
+import TitleBG from 'components/utilsComponents/TitleBG';
 import { Shirts } from 'graphQl/generated';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -12,57 +13,34 @@ type Props = {
   location: string;
 };
 
-const color = '#EAFFEE';
-
-const styles = StyleSheet.create({
-  collectionTitle: {
-    position: 'relative',
-    zIndex: 10,
-    marginBottom: '1em',
-    textAlign: 'center',
-    '::before': {
-      content: '',
-      position: 'absolute',
-      bottom: 0,
-      left: '50%',
-      zIndex: -10,
-      height: '50%',
-      width: '70%',
-      transform: 'translateX(-50%)',
-      backgroundColor: color,
-    },
-  },
-  collectionLink: {
-    position: 'relative',
-    zIndex: 10,
-    '::before': {
-      content: '',
-      position: 'absolute',
-      bottom: 0,
-      left: '50%',
-      height: '50%',
-      zIndex: -10,
-      width: '0%',
-      transform: 'translateX(-50%)',
-      backgroundColor: color,
-      transition: '0.3s ease-in-out',
-    },
-    ':hover::before': {
-      width: '100%',
-    },
-  },
-});
-
 const ShirtView = ({ shirt, location }: Props) => {
-  console.log();
-
+  const color = shirt?.draw?.theme?.color;
+  const styles = StyleSheet.create({
+    collectionLink: {
+      position: 'relative',
+      zIndex: 10,
+      '::before': {
+        content: '',
+        position: 'absolute',
+        bottom: 0,
+        left: '50%',
+        height: '50%',
+        zIndex: -10,
+        width: '0%',
+        transform: 'translateX(-50%)',
+        backgroundColor: color || '',
+        transition: '0.3s ease-in-out',
+      },
+      ':hover::before': {
+        width: '100%',
+      },
+    },
+  });
   return (
     <div key={shirt?.idShirt} className="relative">
-      <h2 className={`before:bg-primary text-2xl ${css(styles.collectionTitle)}`}>
-        {shirt?.draw?.theme?.name}
-      </h2>
+      <TitleBG name={shirt?.draw?.theme?.name || ''} color={color || ''} />
       <div
-        style={{ backgroundColor: color }}
+        style={{ backgroundColor: color || '' }}
         className="w-full cursor-pointer hover:opacity-75 sm:h-auto sm:aspect-w-2 sm:aspect-h-3">
         <Link to={`/collections/${shirt?.draw?.theme?.name}/shirt/${shirt?.idShirt}`}>
           <h3 className="font-semibold text-center text-gray-900">
@@ -84,7 +62,7 @@ const ShirtView = ({ shirt, location }: Props) => {
 
           <div className="flex items-center justify-between w-full p-4">
             <div>
-              <img className="w-12 h-12 " src={gots} alt="label_gots" />
+              <img className="w-12 h-12" src={gots} alt="label_gots" />
             </div>
             <div>
               <p className="mt-1 text-2xl text-black">{shirt?.price}€</p>

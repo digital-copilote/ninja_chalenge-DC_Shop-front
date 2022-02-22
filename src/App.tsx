@@ -7,6 +7,7 @@ import Contact from 'components/pages/contact/Contact';
 import Home from 'components/pages/home/Home';
 import Profile from 'components/pages/Profile/Profile';
 import ProfileSettings from 'components/pages/Profile/ProfileSettings';
+import ShirtDetailContainer from 'components/pages/shirtDetail/ShirtDetailContainer';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
@@ -16,6 +17,7 @@ const routes = [
   { path: '/home', component: <Home /> },
   { path: '/collections', component: <Collections /> },
   { path: '/collections/:idTheme', component: <OneCollection /> },
+  { path: '/collections/:idTheme/shirt/:idShirt', component: <ShirtDetailContainer /> },
   { path: '/aboutus', component: <AboutUs /> },
   { path: '/contact', component: <Contact /> },
   { path: '/profile', component: <Profile /> },

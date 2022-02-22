@@ -9,6 +9,7 @@ import shirtBase from '../../../resources/shirt.png';
 
 type Props = {
   shirt: Shirts | null;
+  location: string;
 };
 
 const color = '#EAFFEE';
@@ -52,9 +53,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ShirtView = ({ shirt }: Props) => {
-  console.log(shirt?.draw?.theme?.idTheme);
-
+const ShirtView = ({ shirt, location }: Props) => {
   return (
     <div key={shirt?.idShirt} className="relative">
       <h2 className={`before:bg-primary text-2xl ${css(styles.collectionTitle)}`}>
@@ -62,44 +61,48 @@ const ShirtView = ({ shirt }: Props) => {
       </h2>
       <div
         style={{ backgroundColor: color }}
-        className="w-full overflow-hidden cursor-pointer h-96 hover:opacity-75 sm:h-auto sm:aspect-w-2 sm:aspect-h-3">
-        <h3 className="font-semibold text-center text-gray-900">
-          <span className="absolute inset-0" />
-          {shirt?.draw?.name}
-        </h3>
-        <div className="relative">
-          <img
-            src={shirtBase}
-            alt={shirt?.draw?.name || ''}
-            className="object-cover object-center w-full h-full"
-          />
-          <img
-            className="absolute w-1/5 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            src={shirt?.draw?.urlDraw || ''}
-            alt={shirt?.draw?.name || ''}
-          />
-        </div>
+        className="w-full cursor-pointer hover:opacity-75 sm:h-auto sm:aspect-w-2 sm:aspect-h-3">
+        <Link to={`/collections/${shirt?.draw?.theme?.name}/shirt/${shirt?.idShirt}`}>
+          <h3 className="font-semibold text-center text-gray-900">
+            <span className="absolute" />
+            {shirt?.draw?.name}
+          </h3>
+          <div className="relative">
+            <img
+              src={shirtBase}
+              alt={shirt?.draw?.name || ''}
+              className="object-cover object-center w-full h-full"
+            />
+            <img
+              className="absolute w-1/5 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              src={shirt?.draw?.urlDraw || ''}
+              alt={shirt?.draw?.name || ''}
+            />
+          </div>
 
-        <div className="flex items-center justify-between w-full p-4">
-          <div>
-            <img className="w-12 h-12 " src={gots} alt="label_gots" />
+          <div className="flex items-center justify-between w-full p-4">
+            <div>
+              <img className="w-12 h-12 " src={gots} alt="label_gots" />
+            </div>
+            <div>
+              <p className="mt-1 text-2xl text-black">{shirt?.price}€</p>
+              <p className="text-xs text-right">TTC</p>
+            </div>
           </div>
-          <div>
-            <p className="mt-1 text-2xl text-black">{shirt?.price}€</p>
-            <p className="text-xs text-right">TTC</p>
-          </div>
-        </div>
-      </div>
-      <div className="p-4">
-        <Link
-          className="flex items-center justify-end"
-          to={`/collections/${shirt?.draw?.theme?.idTheme}`}>
-          <p className={`before:bg-primary ${css(styles.collectionLink)}`}>
-            Voir la collection
-          </p>
-          <ArrowRightIcon className="w-10 h-5" />
         </Link>
       </div>
+      {location !== 'collections' && (
+        <div className="p-4">
+          <Link
+            className="flex items-center justify-end"
+            to={`/collections/${shirt?.draw?.theme?.idTheme}`}>
+            <p className={`before:bg-primary ${css(styles.collectionLink)}`}>
+              Voir la collection
+            </p>
+            <ArrowRightIcon className="w-10 h-5" />
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

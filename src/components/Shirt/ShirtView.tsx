@@ -53,8 +53,6 @@ const styles = StyleSheet.create({
 });
 
 const ShirtView = ({ shirt }: Props) => {
-  console.log(shirt?.draw?.theme?.idTheme);
-
   return (
     <div key={shirt?.idShirt} className="relative">
       <h2 className={`before:bg-primary text-2xl ${css(styles.collectionTitle)}`}>
@@ -62,7 +60,8 @@ const ShirtView = ({ shirt }: Props) => {
       </h2>
       <div
         style={{ backgroundColor: color }}
-        className="w-full overflow-hidden cursor-pointer h-96 hover:opacity-75 sm:h-auto sm:aspect-w-2 sm:aspect-h-3">
+        className="w-full overflow-hidden cursor-pointer h-96 hover:opacity-75 sm:h-auto sm:aspect-w-2 sm:aspect-h-3"
+      >
         <h3 className="font-semibold text-center text-gray-900">
           <span className="absolute inset-0" />
           {shirt?.draw?.name}
@@ -93,7 +92,8 @@ const ShirtView = ({ shirt }: Props) => {
       <div className="p-4">
         <Link
           className="flex items-center justify-end"
-          to={`/collections/${shirt?.draw?.theme?.idTheme}`}>
+          to={`/collections/${shirt?.draw?.theme?.idTheme}`}
+        >
           <p className={`before:bg-primary ${css(styles.collectionLink)}`}>
             Voir la collection
           </p>

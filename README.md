@@ -8,6 +8,9 @@
 <p>Install dependencies</p>
 <pre>npm install</pre>
 
+<p>Run tailwind watch</p>
+<pre>npm run tailwind</pre>
+
 <p>Start the project</p>
 <pre>npm run dev</pre>
 

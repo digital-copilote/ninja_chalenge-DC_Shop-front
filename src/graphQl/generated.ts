@@ -268,6 +268,10 @@ export type Query = {
   UserOrganization?: Maybe<Array<Maybe<Organizations>>>;
 };
 
+export type QueryAllShirtsArgs = {
+  idTheme?: InputMaybe<Scalars['ID']>;
+};
+
 export type QueryOneDrawArgs = {
   idDraw: Scalars['ID'];
 };
@@ -324,6 +328,7 @@ export type Sizes = {
 
 export type Themes = {
   __typename?: 'Themes';
+  color?: Maybe<Scalars['String']>;
   draws?: Maybe<Array<Maybe<Draws>>>;
   idTheme: Scalars['ID'];
   name?: Maybe<Scalars['String']>;
@@ -451,6 +456,7 @@ export type SizeCreateInput = {
 };
 
 export type ThemeCreateInput = {
+  color?: InputMaybe<Scalars['String']>;
   idTheme?: InputMaybe<Scalars['ID']>;
   name?: InputMaybe<Scalars['String']>;
 };
@@ -506,6 +512,7 @@ export type UpdateSizeInput = {
 };
 
 export type UpdateThemeInput = {
+  color?: InputMaybe<Scalars['String']>;
   idTheme?: InputMaybe<Scalars['ID']>;
   name?: InputMaybe<Scalars['String']>;
 };

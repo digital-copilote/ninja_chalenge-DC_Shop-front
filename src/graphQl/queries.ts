@@ -27,6 +27,36 @@ export const shirtsQuery = gql`
         urlDraw
         theme {
           name
+          color
+          iconUrl
+        }
+      }
+    }
+  }
+`;
+export const shirtQuery = gql`
+  query OneShirt($idShirt: ID!) {
+    OneShirt(idShirt: $idShirt) {
+      idShirt
+      price
+      draw {
+        idDraw
+        name
+        urlDraw
+        user {
+          idUser
+          lastname
+          firstname
+        }
+        organization {
+          name
+          idOrganization
+        }
+        theme {
+          idTheme
+          name
+          color
+          iconUrl
         }
       }
     }

@@ -1,9 +1,10 @@
+import ShirtContainer from 'components/Shirt/ShirtContainer';
 import React from 'react';
 
 const Collections = () => {
   return (
     <div>
-      <h1>Collection</h1>
+      <ShirtContainer location="collections" />
     </div>
   );
 };

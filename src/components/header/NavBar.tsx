@@ -43,6 +43,10 @@ const linkProfile = [
     label: 'Se Déconnecter',
     path: '/',
   },
+  {
+    label: 'Panier',
+    path: 'cart',
+  },
 ];
 
 const NavBar = () => {
@@ -88,7 +92,8 @@ const NavBar = () => {
                         'px-1 pt-1 border-transparent border-b-2 text-gray-500 items-center justify-center inline-flex'
                       }
                       key={index}
-                      to={link.path}>
+                      to={link.path}
+                    >
                       {link.label}
                     </NavLink>
                   ))}
@@ -109,7 +114,8 @@ const NavBar = () => {
               <div className="hidden lg:ml-4 lg:flex lg:items-center">
                 <button
                   type="button"
-                  className="flex-shrink-0 p-1 text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                  className="flex-shrink-0 p-1 text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                >
                   <span className="sr-only">View notifications</span>
                   <ShoppingCartIcon className="w-6 h-6" aria-hidden="true" />
                 </button>
@@ -133,7 +139,8 @@ const NavBar = () => {
                     enterTo="transform opacity-100 scale-100"
                     leave="transition ease-in duration-75"
                     leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95">
+                    leaveTo="transform opacity-0 scale-95"
+                  >
                     <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       {linkProfile.map((link, index) => (
                         <Menu.Item key={index}>
@@ -144,7 +151,8 @@ const NavBar = () => {
                                 active ? 'bg-gray-100' : '',
                                 'block px-4 py-2 text-sm text-gray-700',
                               )}
-                              to={link.path}>
+                              to={link.path}
+                            >
                               {link.label}
                             </NavLink>
                           )}
@@ -166,7 +174,8 @@ const NavBar = () => {
                   key={index}
                   as="a"
                   href={link.path}
-                  className="block py-2 pl-3 pr-4 text-base font-medium text-indigo-700 border-l-4 border-indigo-500 bg-indigo-50">
+                  className="block py-2 pl-3 pr-4 text-base font-medium text-indigo-700 border-l-4 border-indigo-500 bg-indigo-50"
+                >
                   {link.label}
                 </Disclosure.Button>
               ))}
@@ -186,7 +195,8 @@ const NavBar = () => {
                 </div>
                 <button
                   type="button"
-                  className="flex-shrink-0 p-1 ml-auto text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  className="flex-shrink-0 p-1 ml-auto text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
                   <span className="sr-only">View notifications</span>
                   <ShoppingCartIcon className="w-6 h-6" aria-hidden="true" />
                 </button>
@@ -197,7 +207,8 @@ const NavBar = () => {
                     key={index}
                     as="a"
                     href={link.path}
-                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
+                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                  >
                     {link.label}
                   </Disclosure.Button>
                 ))}

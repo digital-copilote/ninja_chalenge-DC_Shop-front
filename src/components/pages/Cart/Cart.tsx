@@ -5,10 +5,10 @@ import React, { useContext } from 'react';
 import CartContext from '../../../contexts/CartContext';
 
 const Cart = () => {
-  const { itemCart } = useContext(CartContext);
+  const { shirtsOnCart } = useContext(CartContext);
 
   // Update summary of cart
-  let itemsPrices = itemCart.map((item) => item.price);
+  let itemsPrices = shirtsOnCart.map((item) => item.price * item.quantity);
   let sumCart = itemsPrices.reduce((prev, cur) => prev + cur, 0);
 
   // shipping price
@@ -22,7 +22,7 @@ const Cart = () => {
 
   return (
     <div className="bg-white">
-      <div className="max-w-2xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div className="max-w-2xl px-4 pt-16 pb-24 mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
         <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
           Panier
         </h1>
@@ -33,14 +33,15 @@ const Cart = () => {
             </h2>
 
             <ul className="border-t border-b border-gray-200 divide-y divide-gray-200">
-              {itemCart?.map((product, index) => (
+              {shirtsOnCart?.map((product, index) => (
                 <CartItem
                   key={index}
-                  name={product.draw?.name}
+                  index={index}
+                  drawName={product.drawName}
                   price={product.price}
-                  imageSrc={product.draw?.urlDraw}
-                  size={product.size?.name}
-                  idShirt={product.idShirt}
+                  imageUrl={product.imageUrl}
+                  size={product.size}
+                  quantity={product.quantity}
                 />
               ))}
             </ul>
@@ -49,8 +50,7 @@ const Cart = () => {
           {/* Order summary */}
           <section
             aria-labelledby="summary-heading"
-            className="mt-16 bg-gray-50  px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5"
-          >
+            className="px-4 py-6 mt-16 bg-gray-50 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5">
             <h2 id="summary-heading" className="text-lg font-medium text-gray-900">
               Commande en cours
             </h2>
@@ -60,35 +60,21 @@ const Cart = () => {
                 <dt className="text-sm text-gray-600">Total Articles</dt>
                 <dd className="text-sm font-medium text-gray-900">{sumCart}€</dd>
               </div>
-              <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
+              <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                 <dt className="flex items-center text-sm text-gray-600">
                   <span>Frais de livraison</span>
-                  {/* <a
-                    href="#"
-                    className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
-                    <span className="sr-only">
-                      En savoir plus sur les frais de livraison
-                    </span>
-                    <QuestionMarkCircleIcon className="h-5 w-5" aria-hidden="true" />
-                  </a> */}
                 </dt>
                 <dd className="text-sm font-medium text-gray-900">{shippingPrice}€</dd>
               </div>
-              <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
+              <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                 <dt className="flex text-sm text-gray-600">
                   <span> dont TVA</span>
-                  {/* <a
-                    href="#"
-                    className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
-                    <span className="sr-only">
-                      En savoir plus sur le calcul de la TVA
-                    </span>
-                    <QuestionMarkCircleIcon className="h-5 w-5" aria-hidden="true" />
-                  </a> */}
                 </dt>
-                <dd className="text-sm font-medium text-gray-900">{tvaPrice}€</dd>
+                <dd className="text-sm font-medium text-gray-900">
+                  {(Math.round(tvaPrice * 100) / 100).toFixed(2)}€
+                </dd>
               </div>
-              <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
+              <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                 <dt className="text-base font-medium text-gray-900">Order total</dt>
                 <dd className="text-base font-medium text-gray-900">{sumOrder}€</dd>
               </div>
@@ -97,8 +83,7 @@ const Cart = () => {
             <div className="mt-6">
               <button
                 type="submit"
-                className="w-full bg-indigo-600 border border-transparent  shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
-              >
+                className="w-full px-4 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">
                 Commander
               </button>
             </div>

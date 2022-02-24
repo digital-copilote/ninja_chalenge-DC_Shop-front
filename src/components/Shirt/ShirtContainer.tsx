@@ -1,30 +1,35 @@
 import { useQuery } from '@apollo/client';
 import { Query } from 'graphQl/generated';
 import { shirtsQuery } from 'graphQl/queries';
-import React, { useContext } from 'react';
+import React from 'react';
 
-import CartContext from '../../contexts/CartContext';
 import ShirtView from './ShirtView';
 
-const ShirtContainer = () => {
-  const { setItemCart } = useContext(CartContext);
+type Props = {
+  location: string;
+  idTheme?: string;
+};
 
-  const { loading, error, data } = useQuery<Query>(shirtsQuery);
-
-  // fonction provisoire pour remplir le panier, à supprimer quand on pourra ajouter des éléments manuellement
-  const fillCart = () => {
-    data && setItemCart(data.AllShirts);
-  };
+const ShirtContainer = ({ location, idTheme }: Props) => {
+  const { loading, error, data } = useQuery<Query>(shirtsQuery, {
+    variables: idTheme && location === 'collection' ? { idTheme } : undefined,
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :</p>;
 
   return (
-    <div className="grid grid-cols-1 mt-6 gap-y-10 sm:grid-cols-3 sm:gap-y-0 sm:gap-x-6 lg:gap-x-8">
-      {data?.AllShirts?.map((shirt) => (
-        <ShirtView key={shirt?.idShirt} shirt={shirt} />
-      ))}
-      <button onClick={() => fillCart()}>Remplir le panier</button>
+    <div
+      className={`grid grid-cols-1 m-6 gap-y-10 sm:gap-y-0 sm:gap-x-6  ${
+        location === 'home'
+          ? 'sm:grid-cols-2 w-3/4 mx-auto lg:gap-x-20'
+          : 'sm:grid-cols-3 lg:gap-x-8'
+      }`}>
+      {(location !== 'collections' ? data?.AllShirts?.slice(0, 2) : data?.AllShirts)?.map(
+        (shirt) => (
+          <ShirtView location={location} key={shirt?.idShirt} shirt={shirt} />
+        ),
+      )}
     </div>
   );
 };

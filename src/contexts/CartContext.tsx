@@ -50,10 +50,7 @@ type Props = { children: React.ReactNode };
 export const CartContextProvider: React.FC<Props> = ({ children }) => {
   const [shirtsOnCart, setShirtsOnCart] = useState<IshirtOnCart[]>(SHIRT_ON_CART);
 
-  console.log(shirtsOnCart);
-
   const modifyProductInCart = (index: number, quantity: number) => {
-    console.log(index, quantity);
     // if quantity is 0, the product must be deleted from cart
     if (quantity === 0) {
       setShirtsOnCart(
@@ -63,9 +60,7 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
     // else just remove 1 from quantity
     else {
       const updatedProductsOnCart = [...shirtsOnCart];
-      console.log('updatedProductsOnCart' + ' ' + updatedProductsOnCart);
       updatedProductsOnCart[index].quantity = quantity;
-      console.log('New quantity : ' + quantity);
       setShirtsOnCart(updatedProductsOnCart);
     }
   };

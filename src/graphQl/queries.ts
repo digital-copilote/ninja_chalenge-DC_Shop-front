@@ -20,6 +20,7 @@ export const shirtsQuery = gql`
   query Query($idTheme: ID) {
     AllShirts(idTheme: $idTheme) {
       idShirt
+      idDraw
       price
       draw {
         idTheme
@@ -38,6 +39,8 @@ export const shirtQuery = gql`
   query OneShirt($idShirt: ID!) {
     OneShirt(idShirt: $idShirt) {
       idShirt
+      idDraw
+      idSize
       price
       draw {
         idDraw
@@ -59,6 +62,15 @@ export const shirtQuery = gql`
           iconUrl
         }
       }
+    }
+  }
+`;
+
+export const sizesQuery = gql`
+  query AllSizes($idDraw: ID) {
+    AllSizes(idDraw: $idDraw) {
+      idSize
+      name
     }
   }
 `;

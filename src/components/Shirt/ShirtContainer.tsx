@@ -16,7 +16,7 @@ const ShirtContainer = ({ location, idTheme }: Props) => {
   });
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (error) return <p>Error :</p>;
 
   return (
     <div

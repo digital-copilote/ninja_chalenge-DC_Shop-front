@@ -8,7 +8,7 @@ const Quantity = () => {
 
   const handleChangeQuantity = (action: string) => {
     countProduct >= 0 && action === 'more' && setCountProduct(countProduct + 1);
-    countProduct > 1 && action == 'less' && setCountProduct(countProduct - 1);
+    countProduct > 1 && action === 'less' && setCountProduct(countProduct - 1);
   };
 
   return (

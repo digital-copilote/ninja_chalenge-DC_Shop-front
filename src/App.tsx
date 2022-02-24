@@ -14,7 +14,7 @@ import { Route, Routes } from 'react-router-dom';
 import { CartContextProvider } from './contexts/CartContext';
 
 const routes = [
-  { path: '/home', component: <Home /> },
+  { path: '/', component: <Home /> },
   { path: '/collections', component: <Collections /> },
   { path: '/collections/:idTheme', component: <OneCollection /> },
   { path: '/collections/:idTheme/shirt/:idShirt', component: <ShirtDetailContainer /> },

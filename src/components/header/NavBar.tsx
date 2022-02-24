@@ -14,7 +14,7 @@ const brand = "Arts'Eco";
 const linkArray = [
   {
     label: 'Accueil',
-    path: '/home',
+    path: '/',
   },
   {
     label: 'Nos Collections',
@@ -41,7 +41,7 @@ const linkProfile = [
   },
   {
     label: 'Se Déconnecter',
-    path: '/home',
+    path: '/',
   },
 ];
 

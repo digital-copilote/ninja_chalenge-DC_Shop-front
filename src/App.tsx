@@ -9,7 +9,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 const routes = [
-  { path: '/home', component: <Home /> },
+  { path: '/', component: <Home /> },
   { path: '/collections', component: <Collections /> },
   { path: '/aboutus', component: <AboutUs /> },
   { path: '/contact', component: <Contact /> },

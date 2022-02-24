@@ -34,14 +34,14 @@ interface AppContextInterface {
   shirtsOnCart: IshirtOnCart[];
   setShirtsOnCart: React.Dispatch<React.SetStateAction<IshirtOnCart[]>>;
   modifyProductInCart: Function;
-  addProductInCart: Function;
+  //   addProductInCart: Function;
 }
 
 const CartContext = createContext<AppContextInterface>({
   shirtsOnCart: [],
   setShirtsOnCart: () => {},
   modifyProductInCart: () => {},
-  addProductInCart: () => {},
+  //   addProductInCart: () => {},
 });
 
 export default CartContext;
@@ -70,31 +70,31 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
-  const addProductInCart = (index) => {
-    // If a product isn't in the cart, add it
-    const position = productsOnCart.findIndex(
-      (product) => product.id_product === idProduct,
-    );
+  //   const addProductInCart = (index) => {
+  //     // If a product isn't in the cart, add it
+  //     const position = productsOnCart.findIndex(
+  //       (product) => product.id_product === idProduct,
+  //     );
 
-    if (position === -1) {
-      const positionInProducts = products.find(
-        (product) => product.id_product === idProduct,
-      );
-      const updatedProductsOnCart = [...productsOnCart];
-      updatedProductsOnCart.push({ quantity: 1, ...positionInProducts });
-      console.log(updatedProductsOnCart);
-      setProductsOnCart(updatedProductsOnCart);
-    }
-    // Else, just add 1 to quantity
-    else {
-      const position = productsOnCart.findIndex(
-        (product) => product.id_product === idProduct,
-      );
-      const updatedProductsOnCart = [...productsOnCart];
-      updatedProductsOnCart[position].quantity++;
-      setProductsOnCart(updatedProductsOnCart);
-    }
-  };
+  //     if (position === -1) {
+  //       const positionInProducts = products.find(
+  //         (product) => product.id_product === idProduct,
+  //       );
+  //       const updatedProductsOnCart = [...productsOnCart];
+  //       updatedProductsOnCart.push({ quantity: 1, ...positionInProducts });
+  //       console.log(updatedProductsOnCart);
+  //       setProductsOnCart(updatedProductsOnCart);
+  //     }
+  //     // Else, just add 1 to quantity
+  //     else {
+  //       const position = productsOnCart.findIndex(
+  //         (product) => product.id_product === idProduct,
+  //       );
+  //       const updatedProductsOnCart = [...productsOnCart];
+  //       updatedProductsOnCart[position].quantity++;
+  //       setProductsOnCart(updatedProductsOnCart);
+  //     }
+  //   };
 
   return (
     <CartContext.Provider
@@ -102,7 +102,7 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
         shirtsOnCart,
         setShirtsOnCart,
         modifyProductInCart,
-        addProductInCart,
+        // addProductInCart,
       }}>
       {children}
     </CartContext.Provider>

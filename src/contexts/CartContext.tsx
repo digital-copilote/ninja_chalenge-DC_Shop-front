@@ -42,7 +42,6 @@ type Props = { children: React.ReactNode };
 export const CartContextProvider: React.FC<Props> = ({ children }) => {
   const [shirtsOnCart, setShirtsOnCart] = useState<IshirtOnCart[]>([]);
   const [newShirtPreCart, setNewShirtPreCart] = useState<IshirtOnCart>(SHIRT_ON_CART);
-  console.log(shirtsOnCart);
 
   const modifyProductInCart = (index: number, quantity: number) => {
     // if quantity is 0, the product must be deleted from cart

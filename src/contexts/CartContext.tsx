@@ -1,7 +1,3 @@
-// import { useQuery } from '@apollo/client';
-// import { Shirts } from 'graphQl/generated';
-// import { Query } from 'graphQl/generated';
-// import { shirtsQuery } from 'graphQl/queries';
 import React, { createContext, useState } from 'react';
 
 export interface IshirtOnCart {
@@ -35,6 +31,12 @@ interface AppContextInterface {
   setShirtsOnCart: React.Dispatch<React.SetStateAction<IshirtOnCart[]>>;
   modifyProductInCart: Function;
   addProductInCart: Function;
+  newShirtDrawName: string;
+  setNewShirtDrawName: React.Dispatch<React.SetStateAction<string>>;
+  newShirtSize: string;
+  setNewShirtSize: React.Dispatch<React.SetStateAction<string>>;
+  newShirtPrice: number;
+  setNewShirtPrice: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const CartContext = createContext<AppContextInterface>({
@@ -42,6 +44,12 @@ const CartContext = createContext<AppContextInterface>({
   setShirtsOnCart: () => {},
   modifyProductInCart: () => {},
   addProductInCart: () => {},
+  newShirtDrawName: '',
+  setNewShirtDrawName: () => {},
+  newShirtSize: '',
+  setNewShirtSize: () => {},
+  newShirtPrice: 0,
+  setNewShirtPrice: () => {},
 });
 
 export default CartContext;
@@ -49,8 +57,14 @@ export default CartContext;
 type Props = { children: React.ReactNode };
 export const CartContextProvider: React.FC<Props> = ({ children }) => {
   const [shirtsOnCart, setShirtsOnCart] = useState<IshirtOnCart[]>(SHIRT_ON_CART);
+  const [newShirtDrawName, setNewShirtDrawName] = useState<string>('');
+  const [newShirtSize, setNewShirtSize] = useState<string>('');
+  const [newShirtPrice, setNewShirtPrice] = useState<number>(0);
 
   console.log(shirtsOnCart);
+  console.log(newShirtDrawName);
+  console.log(newShirtSize);
+  console.log(newShirtPrice);
 
   const modifyProductInCart = (index: number, quantity: number) => {
     console.log(index, quantity);
@@ -103,6 +117,9 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
         setShirtsOnCart,
         modifyProductInCart,
         addProductInCart,
+        setNewShirtDrawName,
+        setNewShirtSize,
+        setNewShirtPrice,
       }}>
       {children}
     </CartContext.Provider>

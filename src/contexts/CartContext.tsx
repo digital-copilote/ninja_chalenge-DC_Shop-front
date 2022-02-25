@@ -1,73 +1,50 @@
+import { Maybe } from 'graphQl/generated';
 import React, { createContext, useState } from 'react';
 
 export interface IshirtOnCart {
-  drawName: string;
+  drawName: Maybe<string> | undefined;
   size: string;
   price: number;
   quantity: number;
-  imageUrl: string;
+  imageUrl: Maybe<string> | undefined;
   index?: number;
 }
 
-const SHIRT_ON_CART = [
-  {
-    drawName: 'planete',
-    size: 'M',
-    price: 15,
-    quantity: 1,
-    imageUrl: 'url',
-  },
-  {
-    drawName: 'enfant',
-    size: 'S',
-    price: 25,
-    quantity: 2,
-    imageUrl: 'url',
-  },
-];
+const SHIRT_ON_CART = {
+  drawName: '',
+  size: 'S',
+  price: 0,
+  quantity: 1,
+  imageUrl: '',
+};
 
 interface AppContextInterface {
   shirtsOnCart: IshirtOnCart[];
   setShirtsOnCart: React.Dispatch<React.SetStateAction<IshirtOnCart[]>>;
   modifyProductInCart: Function;
-  // addProductInCart: Function;
-  // newShirtDrawName: string;
-  // setNewShirtDrawName: React.Dispatch<React.SetStateAction<string>>;
-  // newShirtSize: string;
-  // setNewShirtSize: React.Dispatch<React.SetStateAction<string>>;
-  // newShirtPrice: number;
-  // setNewShirtPrice: React.Dispatch<React.SetStateAction<number>>;
+  addProductInCart: Function;
+  newShirtPreCart: IshirtOnCart;
+  setNewShirtPreCart: React.Dispatch<React.SetStateAction<IshirtOnCart>>;
 }
 
 const CartContext = createContext<AppContextInterface>({
   shirtsOnCart: [],
   setShirtsOnCart: () => {},
   modifyProductInCart: () => {},
-  // addProductInCart: () => {},
-  // newShirtDrawName: '',
-  // setNewShirtDrawName: () => {},
-  // newShirtSize: '',
-  // setNewShirtSize: () => {},
-  // newShirtPrice: 0,
-  // setNewShirtPrice: () => {},
+  addProductInCart: () => {},
+  newShirtPreCart: SHIRT_ON_CART,
+  setNewShirtPreCart: () => {},
 });
 
 export default CartContext;
 
 type Props = { children: React.ReactNode };
 export const CartContextProvider: React.FC<Props> = ({ children }) => {
-  const [shirtsOnCart, setShirtsOnCart] = useState<IshirtOnCart[]>(SHIRT_ON_CART);
-  // const [newShirtDrawName, setNewShirtDrawName] = useState<string>('');
-  // const [newShirtSize, setNewShirtSize] = useState<string>('');
-  // const [newShirtPrice, setNewShirtPrice] = useState<number>(0);
-
+  const [shirtsOnCart, setShirtsOnCart] = useState<IshirtOnCart[]>([]);
+  const [newShirtPreCart, setNewShirtPreCart] = useState<IshirtOnCart>(SHIRT_ON_CART);
   console.log(shirtsOnCart);
-  // console.log(newShirtDrawName);
-  // console.log(newShirtSize);
-  // console.log(newShirtPrice);
 
   const modifyProductInCart = (index: number, quantity: number) => {
-    console.log(index, quantity);
     // if quantity is 0, the product must be deleted from cart
     if (quantity === 0) {
       setShirtsOnCart(
@@ -77,38 +54,28 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
     // else just remove 1 from quantity
     else {
       const updatedProductsOnCart = [...shirtsOnCart];
-      console.log('updatedProductsOnCart' + ' ' + updatedProductsOnCart);
       updatedProductsOnCart[index].quantity = quantity;
-      console.log('New quantity : ' + quantity);
       setShirtsOnCart(updatedProductsOnCart);
     }
   };
 
-  // const addProductInCart = (index) => {
-  //   // If a product isn't in the cart, add it
-  //   const position = productsOnCart.findIndex(
-  //     (product) => product.id_product === idProduct,
-  //   );
-
-  //   if (position === -1) {
-  //     const positionInProducts = products.find(
-  //       (product) => product.id_product === idProduct,
-  //     );
-  //     const updatedProductsOnCart = [...productsOnCart];
-  //     updatedProductsOnCart.push({ quantity: 1, ...positionInProducts });
-  //     console.log(updatedProductsOnCart);
-  //     setProductsOnCart(updatedProductsOnCart);
-  //   }
-  //   // Else, just add 1 to quantity
-  //   else {
-  //     const position = productsOnCart.findIndex(
-  //       (product) => product.id_product === idProduct,
-  //     );
-  //     const updatedProductsOnCart = [...productsOnCart];
-  //     updatedProductsOnCart[position].quantity++;
-  //     setProductsOnCart(updatedProductsOnCart);
-  //   }
-  // };
+  const addProductInCart = (shirt: IshirtOnCart) => {
+    // If a product isn't in the cart, add it
+    const position = shirtsOnCart.findIndex(
+      (product) => product.drawName === shirt.drawName && product.size === shirt.size,
+    );
+    if (position === -1) {
+      const newShirtsOnCart = [...shirtsOnCart];
+      newShirtsOnCart.push(shirt);
+      setShirtsOnCart(newShirtsOnCart);
+    }
+    // Else, just add 1 to quantity
+    else {
+      const updatedProductsOnCart = [...shirtsOnCart];
+      updatedProductsOnCart[position].quantity++;
+      setShirtsOnCart(updatedProductsOnCart);
+    }
+  };
 
   return (
     <CartContext.Provider
@@ -116,10 +83,9 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
         shirtsOnCart,
         setShirtsOnCart,
         modifyProductInCart,
-        // addProductInCart,
-        // setNewShirtDrawName,
-        // setNewShirtSize,
-        // setNewShirtPrice,
+        addProductInCart,
+        newShirtPreCart,
+        setNewShirtPreCart,
       }}>
       {children}
     </CartContext.Provider>

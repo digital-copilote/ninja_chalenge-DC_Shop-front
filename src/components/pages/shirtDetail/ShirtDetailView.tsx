@@ -1,6 +1,7 @@
 import { Maybe, Shirts } from 'graphQl/generated';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 
+import CartContext from '../../../contexts/CartContext';
 import Image from './image/Image';
 import Infos from './infos/Infos';
 
@@ -9,7 +10,14 @@ type Props = {
 };
 
 const ShirtDetailView = ({ shirtDetails }: Props) => {
-  console.log(shirtDetails);
+  const { newShirtPreCart, setNewShirtPreCart } = useContext(CartContext);
+
+  useEffect(() => {
+    const newShirt = { ...newShirtPreCart };
+    newShirt.drawName = shirtDetails?.draw?.name;
+    newShirt.imageUrl = shirtDetails?.draw?.urlDraw;
+    setNewShirtPreCart(newShirt);
+  }, [shirtDetails]);
 
   return (
     <div className="flex items-center">

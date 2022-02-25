@@ -6,6 +6,7 @@ import React from 'react';
 import gots from '../../../../../resources/fairware.png';
 import fairware from '../../../../../resources/gots.svg';
 import shirtBase from '../../../../../resources/shirt.png';
+// import CartContext from '../../../../contexts/CartContext';
 
 type Props = {
   urlDraw: Maybe<string> | undefined;
@@ -14,7 +15,14 @@ type Props = {
 };
 
 const Image = ({ urlDraw, color, name }: Props) => {
-  console.log(urlDraw, color);
+  // const { newShirtPreCart, setNewShirtPreCart } = useContext(CartContext);
+
+  // useEffect(() => {
+  //   const newShirt = { ...newShirtPreCart };
+  //   newShirt.imageUrl = urlDraw;
+  //   console.log(newShirt);
+  //   setNewShirtPreCart(newShirt);
+  // }, [urlDraw]);
 
   return (
     <div className="relative w-1/2 ">

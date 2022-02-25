@@ -14,7 +14,7 @@ const brand = "Arts'Eco";
 const linkArray = [
   {
     label: 'Accueil',
-    path: '/home',
+    path: '/',
   },
   {
     label: 'Nos Collections',
@@ -41,7 +41,7 @@ const linkProfile = [
   },
   {
     label: 'Se Déconnecter',
-    path: '/home',
+    path: '/',
   },
   {
     label: 'Panier',
@@ -88,8 +88,8 @@ const NavBar = () => {
                   {linkArray.map((link, index) => (
                     <NavLink
                       className={({ isActive }) =>
-                        (isActive ? ' text-gray-900  border-primary font-medium ' : '') +
-                        'px-1 pt-1 border-transparent border-b-2 text-gray-500 items-center justify-center inline-flex'
+                        (isActive ? 'text-gray-900  border-primary' : '') +
+                        ' flex px-1 pt-1 border-transparent border-b-2 text-gray-500 items-center justify-center'
                       }
                       key={index}
                       to={link.path}>

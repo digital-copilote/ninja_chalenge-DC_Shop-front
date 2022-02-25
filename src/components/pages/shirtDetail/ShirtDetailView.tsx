@@ -1,4 +1,6 @@
-import { Maybe, Shirts } from 'graphQl/generated';
+import { useQuery } from '@apollo/client';
+import { Maybe, Query, Shirts } from 'graphQl/generated';
+import { sizesQuery } from 'graphQl/queries';
 import React, { useContext, useEffect } from 'react';
 
 import CartContext from '../../../contexts/CartContext';
@@ -19,6 +21,15 @@ const ShirtDetailView = ({ shirtDetails }: Props) => {
     setNewShirtPreCart(newShirt);
   }, [shirtDetails]);
 
+  const idDraw = shirtDetails?.idDraw;
+
+  const { loading, error, data } = useQuery<Query>(sizesQuery, {
+    variables: { idDraw },
+  });
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :</p>;
+
   return (
     <div className="flex items-center">
       <Image
@@ -31,6 +42,8 @@ const ShirtDetailView = ({ shirtDetails }: Props) => {
         price={shirtDetails?.price || 0}
         organization={shirtDetails?.draw?.organization}
         user={shirtDetails?.draw?.user}
+        sizes={data?.AllSizes}
+        idSizeDefault={shirtDetails?.idSize}
       />
     </div>
   );

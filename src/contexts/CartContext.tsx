@@ -3,7 +3,7 @@ import React, { createContext, useState } from 'react';
 
 export interface IshirtOnCart {
   drawName: Maybe<string> | undefined;
-  size: string;
+  size: Maybe<string> | undefined;
   price: number;
   quantity: number;
   imageUrl: Maybe<string> | undefined;

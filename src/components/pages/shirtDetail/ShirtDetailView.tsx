@@ -31,7 +31,7 @@ const ShirtDetailView = ({ shirtDetails }: Props) => {
   if (error) return <p>Error :</p>;
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center p-4">
       <Image
         urlDraw={shirtDetails?.draw?.urlDraw}
         color={shirtDetails?.draw?.theme?.color}

@@ -25,7 +25,7 @@ const Size = ({ size, color, sizeSelected, setSizeSelected }: Props) => {
     <button
       onClick={() => handleChangeSize()}
       style={{ backgroundColor: color }}
-      className={`flex items-center justify-around w-10 h-10 cursor-pointer hover:border-2 hover:border-primary ${
+      className={`flex mr-2 items-center justify-around w-10 h-10 cursor-pointer hover:border-2 hover:border-primary ${
         sizeSelected === size?.idSize ? 'border-2 border-primary' : ''
       }`}>
       {size?.name}

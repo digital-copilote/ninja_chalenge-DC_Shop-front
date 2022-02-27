@@ -16,7 +16,7 @@ const AddProducts = ({ color, sizes, idSizeDefault }: Props) => {
   const [sizeSelected, setSizeSelected] = useState(idSizeDefault);
   return (
     <div className="w-3/4">
-      <div className="flex justify-around">
+      <div className="flex justify-center">
         {sizes &&
           sizes.map((size) => (
             <Size

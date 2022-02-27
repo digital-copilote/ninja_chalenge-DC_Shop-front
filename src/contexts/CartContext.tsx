@@ -12,7 +12,7 @@ export interface IshirtOnCart {
 
 const SHIRT_ON_CART = {
   drawName: '',
-  size: 'S',
+  size: 'M',
   price: 0,
   quantity: 1,
   imageUrl: '',

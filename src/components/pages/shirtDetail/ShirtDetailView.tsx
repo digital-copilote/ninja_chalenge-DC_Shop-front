@@ -1,8 +1,9 @@
 import { useQuery } from '@apollo/client';
 import { Maybe, Query, Shirts } from 'graphQl/generated';
 import { sizesQuery } from 'graphQl/queries';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 
+import CartContext from '../../../contexts/CartContext';
 import Image from './image/Image';
 import Infos from './infos/Infos';
 
@@ -11,6 +12,15 @@ type Props = {
 };
 
 const ShirtDetailView = ({ shirtDetails }: Props) => {
+  const { newShirtPreCart, setNewShirtPreCart } = useContext(CartContext);
+
+  useEffect(() => {
+    const newShirt = { ...newShirtPreCart };
+    newShirt.drawName = shirtDetails?.draw?.name;
+    newShirt.imageUrl = shirtDetails?.draw?.urlDraw;
+    setNewShirtPreCart(newShirt);
+  }, [shirtDetails]);
+
   const idDraw = shirtDetails?.idDraw;
 
   const { loading, error, data } = useQuery<Query>(sizesQuery, {

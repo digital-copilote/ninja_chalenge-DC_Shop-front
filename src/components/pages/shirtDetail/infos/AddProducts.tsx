@@ -14,7 +14,6 @@ type Props = {
 
 const AddProducts = ({ color, sizes, idSizeDefault }: Props) => {
   const [sizeSelected, setSizeSelected] = useState(idSizeDefault);
-  console.log(sizeSelected);
   return (
     <div className="w-3/4">
       <div className="flex justify-around">

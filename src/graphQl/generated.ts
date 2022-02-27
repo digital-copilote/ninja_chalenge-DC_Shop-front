@@ -249,6 +249,7 @@ export type Organizations = {
 
 export type Query = {
   __typename?: 'Query';
+  AllArtists?: Maybe<Array<Maybe<Users>>>;
   AllDraws?: Maybe<Array<Maybe<Draws>>>;
   AllOrderItems?: Maybe<Array<Maybe<OrdersItems>>>;
   AllOrders?: Maybe<Array<Maybe<Orders>>>;
@@ -266,6 +267,10 @@ export type Query = {
   OneTheme?: Maybe<Themes>;
   OneUser?: Maybe<Users>;
   UserOrganization?: Maybe<Array<Maybe<Organizations>>>;
+};
+
+export type QueryAllArtistsArgs = {
+  role?: InputMaybe<Scalars['String']>;
 };
 
 export type QueryAllShirtsArgs = {

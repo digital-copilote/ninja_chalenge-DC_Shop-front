@@ -74,3 +74,27 @@ export const sizesQuery = gql`
     }
   }
 `;
+
+export const artistsQuery = gql`
+  query AllArtists($role: String) {
+    AllArtists(role: $role) {
+      idUser
+      firstname
+      lastname
+      city
+      role
+      bio
+      draws {
+        idDraw
+        name
+        urlDraw
+        idTheme
+        theme {
+          name
+          color
+          iconUrl
+        }
+      }
+    }
+  }
+`;

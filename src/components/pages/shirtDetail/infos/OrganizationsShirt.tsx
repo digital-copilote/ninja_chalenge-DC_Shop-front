@@ -10,8 +10,6 @@ type Props = {
 };
 
 const OrganizationsShirt = ({ organization }: Props) => {
-  console.log(organization);
-
   return (
     <>
       {organization && (

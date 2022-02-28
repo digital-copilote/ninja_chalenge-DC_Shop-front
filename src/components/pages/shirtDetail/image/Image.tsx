@@ -14,8 +14,6 @@ type Props = {
 };
 
 const Image = ({ urlDraw, color, name }: Props) => {
-  console.log(urlDraw, color);
-
   return (
     <div className="relative w-1/2 ">
       <div style={{ backgroundColor: color || '' }}>

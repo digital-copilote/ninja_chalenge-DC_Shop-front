@@ -43,10 +43,6 @@ const linkProfile = [
     label: 'Se Déconnecter',
     path: '/',
   },
-  {
-    label: 'Panier',
-    path: 'cart',
-  },
 ];
 
 const NavBar = () => {
@@ -111,12 +107,14 @@ const NavBar = () => {
                 </Disclosure.Button>
               </div>
               <div className="hidden lg:ml-4 lg:flex lg:items-center">
-                <button
-                  type="button"
-                  className="flex-shrink-0 p-1 text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
-                  <span className="sr-only">View notifications</span>
-                  <ShoppingCartIcon className="w-6 h-6" aria-hidden="true" />
-                </button>
+                <NavLink to="/cart">
+                  <button
+                    type="button"
+                    className="flex-shrink-0 p-1 text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                    <span className="sr-only">View notifications</span>
+                    <ShoppingCartIcon className="w-6 h-6" aria-hidden="true" />
+                  </button>
+                </NavLink>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative flex-shrink-0 ml-4">
@@ -188,12 +186,14 @@ const NavBar = () => {
                   <div className="text-base font-medium text-gray-800">Tom Cook</div>
                   <div className="text-sm font-medium text-gray-500">tom@example.com</div>
                 </div>
-                <button
-                  type="button"
-                  className="flex-shrink-0 p-1 ml-auto text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <span className="sr-only">View notifications</span>
-                  <ShoppingCartIcon className="w-6 h-6" aria-hidden="true" />
-                </button>
+                <NavLink to="/cart">
+                  <button
+                    type="button"
+                    className="flex-shrink-0 p-1 ml-auto text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <span className="sr-only">View notifications</span>
+                    <ShoppingCartIcon className="w-6 h-6" aria-hidden="true" />
+                  </button>
+                </NavLink>
               </div>
               <div className="mt-3 space-y-1">
                 {linkProfile.map((link, index) => (

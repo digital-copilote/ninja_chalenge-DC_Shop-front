@@ -11,8 +11,6 @@ type Props = {
 };
 
 const ArtistView = ({ artistRandom }: Props) => {
-  console.log(artistRandom?.draws);
-
   return (
     <div>
       <div className="flex justify-end w-2/3 mx-auto py-10 text-4xl">

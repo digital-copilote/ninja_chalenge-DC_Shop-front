@@ -14,7 +14,7 @@ import ContainerCarousel from './ContainerCarousel';
 
 const Carousel = () => {
   return (
-    <>
+    <div className="h-screen">
       <Swiper
         cssMode={true}
         navigation={true}
@@ -22,14 +22,14 @@ const Carousel = () => {
         mousewheel={true}
         keyboard={true}
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-        className="h-screen">
+        className="h-4/6">
         {images.map((image, index) => (
           <SwiperSlide key={index}>
             <ContainerCarousel image={image} />
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 };
 

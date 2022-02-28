@@ -1,5 +1,5 @@
-import fleurs from '../resources/fleurscarrousel.png';
 import drawer from '../resources/drawer.jpg';
+import fleurs from '../resources/fleurscarrousel.png';
 
 const images = [
   {

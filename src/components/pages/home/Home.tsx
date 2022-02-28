@@ -1,5 +1,6 @@
 import ShirtContainer from 'components/Shirt/ShirtContainer';
 import React from 'react';
+
 import Carousel from './Carousel';
 
 const Home = () => {

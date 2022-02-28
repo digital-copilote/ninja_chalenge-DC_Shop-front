@@ -1,12 +1,11 @@
-import { Maybe } from 'graphQl/generated';
 import React, { createContext, useState } from 'react';
 
 export interface IshirtOnCart {
-  drawName: Maybe<string> | undefined;
-  size: Maybe<string> | undefined;
+  drawName: string;
+  size: string;
   price: number;
   quantity: number;
-  imageUrl: Maybe<string> | undefined;
+  imageUrl: string;
   index?: number;
 }
 

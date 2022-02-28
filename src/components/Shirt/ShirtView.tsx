@@ -15,6 +15,7 @@ type Props = {
 
 const ShirtView = ({ shirt, location }: Props) => {
   const color = shirt?.draw?.theme?.color;
+
   const styles = StyleSheet.create({
     collectionLink: {
       position: 'relative',

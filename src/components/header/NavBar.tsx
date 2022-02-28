@@ -14,7 +14,7 @@ const brand = "Arts'Eco";
 const linkArray = [
   {
     label: 'Accueil',
-    path: '/home',
+    path: '/',
   },
   {
     label: 'Nos Collections',
@@ -41,7 +41,7 @@ const linkProfile = [
   },
   {
     label: 'Se Déconnecter',
-    path: '/home',
+    path: '/',
   },
 ];
 
@@ -84,8 +84,8 @@ const NavBar = () => {
                   {linkArray.map((link, index) => (
                     <NavLink
                       className={({ isActive }) =>
-                        (isActive ? ' text-gray-900  border-primary font-medium ' : '') +
-                        'px-1 pt-1 border-transparent border-b-2 text-gray-500 items-center justify-center inline-flex'
+                        (isActive ? 'text-gray-900  border-primary' : '') +
+                        ' flex px-1 pt-1 border-transparent border-b-2 text-gray-500 items-center justify-center'
                       }
                       key={index}
                       to={link.path}>
@@ -107,12 +107,14 @@ const NavBar = () => {
                 </Disclosure.Button>
               </div>
               <div className="hidden lg:ml-4 lg:flex lg:items-center">
-                <button
-                  type="button"
-                  className="flex-shrink-0 p-1 text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
-                  <span className="sr-only">View notifications</span>
-                  <ShoppingCartIcon className="w-6 h-6" aria-hidden="true" />
-                </button>
+                <NavLink to="/cart">
+                  <button
+                    type="button"
+                    className="flex-shrink-0 p-1 text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                    <span className="sr-only">View notifications</span>
+                    <ShoppingCartIcon className="w-6 h-6" aria-hidden="true" />
+                  </button>
+                </NavLink>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative flex-shrink-0 ml-4">
@@ -184,12 +186,14 @@ const NavBar = () => {
                   <div className="text-base font-medium text-gray-800">Tom Cook</div>
                   <div className="text-sm font-medium text-gray-500">tom@example.com</div>
                 </div>
-                <button
-                  type="button"
-                  className="flex-shrink-0 p-1 ml-auto text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <span className="sr-only">View notifications</span>
-                  <ShoppingCartIcon className="w-6 h-6" aria-hidden="true" />
-                </button>
+                <NavLink to="/cart">
+                  <button
+                    type="button"
+                    className="flex-shrink-0 p-1 ml-auto text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <span className="sr-only">View notifications</span>
+                    <ShoppingCartIcon className="w-6 h-6" aria-hidden="true" />
+                  </button>
+                </NavLink>
               </div>
               <div className="mt-3 space-y-1">
                 {linkProfile.map((link, index) => (

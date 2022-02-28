@@ -4,8 +4,6 @@ import React from 'react';
 import shirtBase from '../../../../../resources/shirt.png';
 
 const ShirtArtist = ({ draw }: { draw: Maybe<Maybe<Draws>> | undefined }) => {
-  console.log(draw?.theme?.color);
-
   return (
     <div className="relative">
       <div

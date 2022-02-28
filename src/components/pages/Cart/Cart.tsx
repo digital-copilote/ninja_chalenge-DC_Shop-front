@@ -83,7 +83,7 @@ const Cart = () => {
             <div className="mt-6">
               <button
                 type="submit"
-                className="w-full px-4 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">
+                className="w-full px-4 py-3 text-base font-medium text-white bg-primary border border-transparent shadow-sm hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">
                 Commander
               </button>
             </div>

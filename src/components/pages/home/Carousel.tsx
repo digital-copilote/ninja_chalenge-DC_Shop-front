@@ -1,4 +1,3 @@
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -14,7 +13,7 @@ import ContainerCarousel from './ContainerCarousel';
 
 const Carousel = () => {
   return (
-    <div className="h-screen">
+    <div className="h-screen flex items-center">
       <Swiper
         cssMode={true}
         navigation={true}
